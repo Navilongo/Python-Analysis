@@ -11,28 +11,39 @@ budget_data = os.path.join(current_directory, 'Resources', 'budget_data.csv')
 # Read the CSV
 with open(budget_data) as csv_file:
     budget = csv.reader(csv_file, delimiter=",")
-
+    total = 0
     # Skip header row
     next(budget)
-
+    row_count = 0
     print(f"Budget Analysis")
 
     print(f"-----------------------------------")
     
     # Loop through whole csv
-    for row in budget:
-        
-    
-    # Net total amount of "Profit/Losses" over the period
-        total = 0
-        total += int(row[1])
-        print(f"Total profit {total}")
+    for x in budget:
+        # Count how many rows. Each row == each month in the year 
+        row_count = row_count + 1
 
-    # Count how many rows. Each row == each month in the year 
-        row_count = sum(1 for row in budget)     
+        # Net total amount of "Profit/Losses" over the period
+        total = total + int(x[1])
+
+        # Average of total changes
+        average = total/row_count
+        
+
+    
+
+     # Average of total changes
+       # average = total/row_count
+            
      
     # Print number of months
-        print(f"Number of months: {row_count}")
+    print(f"Number of months: {row_count}")
+
+    # Print total profit/loss
+    print(f"Total profit {total}")
+
+    print(f"Average Change {average}")
 
     
     
