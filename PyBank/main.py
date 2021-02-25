@@ -28,7 +28,7 @@ with open(budget_data) as csv_file:
         total = total + int(x[1])
 
         # Average of total changes
-        average = total/row_count
+        average = int(total/row_count)
         
 
     
@@ -41,9 +41,9 @@ with open(budget_data) as csv_file:
     print(f"Number of months: {row_count}")
 
     # Print total profit/loss
-    print(f"Total profit {total}")
+    print(f"Total profit: {total}")
 
-    print(f"Average Change {average}")
+    print(f"Average Change: {average}")
 
     
     
