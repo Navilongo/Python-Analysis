@@ -1,7 +1,6 @@
 import os
 import csv 
 
-# Total number of months included in the data set
 
 # Path to collect CSV data
 current_directory = os.path.dirname(__file__)
@@ -12,6 +11,7 @@ poll_data = os.path.join(current_directory, 'Resources', 'election_data.csv')
 with open(poll_data) as csv_file:
     poll = csv.reader(csv_file, delimiter=",")
     
+    # Give start value for each variable that will be looped and added thorough loop
     votes = 0
     correy_vote = 0
     Khan_vote = 0
@@ -32,9 +32,10 @@ with open(poll_data) as csv_file:
         if row[2] == "Li":
             li_vote = li_vote + 1
         
+        # Total number of votes
         votes = votes + 1
         
-        #Percentages
+        # Determine Percentages dividing number of votes counter earlier by number of votes
         correy_percent = float(correy_vote/votes)*100
         correy_percent = round(correy_percent, 3)
         Khan_percent = float(Khan_vote/votes)*100
@@ -44,8 +45,11 @@ with open(poll_data) as csv_file:
         li_percent = float(li_vote/votes)*100
         li_percent = round(li_percent, 3)
 
+        # Determine highest vote
         final_votes = [correy_vote, Khan_vote, otooley_vote, li_vote]
         winner = max(final_votes)
+
+        # Cast name of winner into Elected
         if winner == correy_vote:
             Elected = "Correy"
         elif winner == Khan_vote:
@@ -55,22 +59,26 @@ with open(poll_data) as csv_file:
         else:
             Elected = "Li"
 
-    
+    # Print all values
+
+    #Title
     print(f"Election Results")
     print(f"--------------------")
+
+    # Total number of votes
     print(f"Total Votes: {votes}")
     print(f"--------------------")
-    print(f"Correy: {correy_percent}% Total: {correy_vote}")
-    print(f"Khan: {Khan_percent}% Total: {Khan_vote}")
-    print(f"O'Tooley: {otooley_percent}% Total: {otooley_vote}")
-    print(f"Li: {li_percent}% Total: {li_vote}")
+    
+    # Print each result with percentage and total number of votes
+    print(f"Correy: {correy_percent}% Casted Votes: {correy_vote}")
+    print(f"Khan: {Khan_percent}% Casted Votes: {Khan_vote}")
+    print(f"O'Tooley: {otooley_percent}% Casted Votes: {otooley_vote}")
+    print(f"Li: {li_percent}% Casted Votes: {li_vote}")
     print(f"--------------------")
+    
+    # Winner by popular vote!
     print(f"Winner: {Elected}")
     print(f"--------------------")
     
 
 
-#Total number of votes
-#List of candidates who received votes
-# percentage of votes each candidate won
-# winner of election based on popular vote
