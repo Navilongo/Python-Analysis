@@ -1,12 +1,13 @@
 import os
-import csv 
+import csv
+import sys 
 
 # Total number of months included in the data set
 
 # Path to collect CSV data
 current_directory = os.path.dirname(__file__)
-budget_data = os.path.join(current_directory, 'Resources', 'budget_data.csv')
-
+budget_data = os.path.join(current_directory, '..', 'Resources', 'budget_data.csv')
+analysis_output = os.path.join(current_directory, 'Analysis.txt')
 
 # Read the CSV
 with open(budget_data) as csv_file:
@@ -15,12 +16,12 @@ with open(budget_data) as csv_file:
     # Skip header row
     next(budget)
     row_count = 0
-    print(f"Budget Analysis")
-
-    print(f"-----------------------------------")
+    month, val = [], []
     
+     
     # Loop through whole csv
     for x in budget:
+        
         # Count how many rows. Each row == each month in the year 
         row_count = row_count + 1
 
@@ -29,21 +30,35 @@ with open(budget_data) as csv_file:
 
         # Average of total changes
         average = int(total/row_count)
-        
 
+        # Find the Highest Profit and Lowest Loss
+        val.append(float(x[1]))
+    
+        month.append(x[0])
+
+
+
+# Print number of months
+results = f"""Budget Analysis
+------------------------------
+Number of months: {row_count}
+Total profit: {total}
+Average Change: {average}
+Greatest Decrease in Profit: {month[val.index(min(val))]} {min(val)}
+Greatest Increase in Profit: {month[val.index(max(val))]} {max(val)}
+"""
+
+print(results)
+
+
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(analysis_output, 'w') as final_text:
+    final_text.write(results)
+    
+    
     
 
-     # Average of total changes
-       # average = total/row_count
-            
-     
-    # Print number of months
-    print(f"Number of months: {row_count}")
-
-    # Print total profit/loss
-    print(f"Total profit: {total}")
-
-    print(f"Average Change: {average}")
 
     
     

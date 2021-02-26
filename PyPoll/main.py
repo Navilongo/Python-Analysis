@@ -5,6 +5,8 @@ import csv
 # Path to collect CSV data
 current_directory = os.path.dirname(__file__)
 poll_data = os.path.join(current_directory, 'Resources', 'election_data.csv')
+elections_output = os.path.join(current_directory, 'Analysis', 'Analysis.txt')
+
 
 
 # Read the CSV
@@ -58,27 +60,27 @@ with open(poll_data) as csv_file:
             Elected = "O'Tooley"
         else:
             Elected = "Li"
-
-    # Print all values
-
-    #Title
-    print(f"Election Results")
-    print(f"--------------------")
-
-    # Total number of votes
-    print(f"Total Votes: {votes}")
-    print(f"--------------------")
-    
-    # Print each result with percentage and total number of votes
-    print(f"Correy: {correy_percent}% Casted Votes: {correy_vote}")
-    print(f"Khan: {Khan_percent}% Casted Votes: {Khan_vote}")
-    print(f"O'Tooley: {otooley_percent}% Casted Votes: {otooley_vote}")
-    print(f"Li: {li_percent}% Casted Votes: {li_vote}")
-    print(f"--------------------")
-    
-    # Winner by popular vote!
-    print(f"Winner: {Elected}")
-    print(f"--------------------")
     
 
+# Print number of monWinner: {Elected}ths
+results = f"""Election Results
+------------------------------
+Total Votes: {votes}
+--------------------
+Correy: {correy_percent}% Casted Votes: {correy_vote}
+Khan: {Khan_percent}% Casted Votes: {Khan_vote}
+O'Tooley: {otooley_percent}% Casted Votes: {otooley_vote}
+Li: {li_percent}% Casted Votes: {li_vote}
+----------------------------------------
+Winner: {Elected}
+--------------------
+"""
+
+print(results)
+
+
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(elections_output, 'w') as final_text:
+    final_text.write(results)
 
