@@ -62,7 +62,7 @@ with open(poll_data) as csv_file:
             Elected = "Li"
     
 
-# Print number of monWinner: {Elected}ths
+# Print totals, percentages casted for each candidate and winner. 
 results = f"""Election Results
 ------------------------------
 Total Votes: {votes}
