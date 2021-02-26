@@ -7,7 +7,7 @@ import sys
 # Path to collect CSV data
 current_directory = os.path.dirname(__file__)
 budget_data = os.path.join(current_directory, '..', 'Resources', 'budget_data.csv')
-analysis_output = os.path.join(current_directory, 'Analysis.txt')
+analysis_output = os.path.join(current_directory, 'Analysis' 'Analysis.txt')
 
 # Read the CSV
 with open(budget_data) as csv_file:
