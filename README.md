@@ -1,2 +1,3 @@
 # python-challenge
-Python homework 
+
+In this repository I utilized python to create a basic analysis on rats
